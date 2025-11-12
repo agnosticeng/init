@@ -35,9 +35,9 @@ select
 
 {{end}}
 
-{{define "buffer_size"}}
+{{define "condition"}}
 
-select toUInt64(count(*)) as size from buffer
+select toUInt64(count(*)) >= {{.MAX_BUFFER_SIZE | default "1000000"}} as value from buffer
 
 {{end}}
 
